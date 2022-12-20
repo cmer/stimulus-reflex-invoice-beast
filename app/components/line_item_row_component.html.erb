@@ -1,0 +1,70 @@
+<% unless omit_outer_element %>
+<tr id="<%= dom_id(line_item) %>" data-row-id="<%= dom_id(line_item) %>" data-line-item-id="<%= line_item.id %>">
+<% end %>
+
+  <td class="whitespace-nowrap p-2 text-sm text-gray-700 sm:pl-4">
+    <%= text_field_tag field_name(:description),
+      line_item.description,
+      class: "#{text_input_classes_for(:description)} w-full",
+      data: {
+        reflex: "change->InvoiceReflex#line_changed",
+        reflex_dataset: dataset,
+        reflex_serialize_form: "true"
+      }
+    %>
+  </td>
+  <td class="whitespace-nowrap px-1 py-2 text-sm text-gray-700">
+    <%= text_field_tag field_name(:quantity),
+      line_item.quantity,
+      class: "#{text_input_classes_for(:quantity)} w-14 text-right",
+      data: {
+        reflex: "change->InvoiceReflex#line_changed",
+        reflex_dataset: dataset,
+        reflex_serialize_form: "true"
+      }
+    %>
+  </td>
+  <td class="whitespace-nowrap px-1 py-2 text-sm text-gray-700">
+    <%= text_field_tag field_name(:price),
+      line_item.price&.format,
+      class: "#{text_input_classes_for(:price_cents)} w-24 text-right",
+      data: {
+        reflex: "change->InvoiceReflex#line_changed",
+        reflex_dataset: dataset,
+        reflex_serialize_form: "true"
+      }
+    %>
+  </td>
+  <td class="whitespace-nowrap px-1 py-2 text-sm text-gray-700">
+    <%= text_field_tag field_name(:discount_percentage),
+      line_item.discount_percentage&.zero? ? "" : line_item.discount_percentage,
+      class: "#{text_input_classes_for(:discount_percentage)} w-14 text-right",
+      data: {
+        reflex: "change->InvoiceReflex#line_changed",
+        reflex_dataset: dataset,
+        reflex_serialize_form: "true"
+      }
+    %>
+    <span class="ml-1">%</span>
+  </td>
+  <td class="whitespace-nowrap px-1 py-2 text-sm text-gray-700 font-semibold text-right">
+    <%= line_item.total&.format %>
+  </td>
+  <td class="relative whitespace-nowrap p-2 text-right sm:pr-4">
+    <%= link_to("#",
+      class: "text-gray-400 hover:text-gray-600",
+      data: {
+        reflex: "click->InvoiceReflex#delete_line",
+        reflex_dataset: dataset,
+        reflex_serialize_form: "false"
+      }) do
+    %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    <% end %>
+  </td>
+
+<% unless omit_outer_element %>
+</tr>
+<% end %>

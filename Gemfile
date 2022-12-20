@@ -31,3 +31,12 @@ group :development do
   # gem "spring"
 end
 
+gem "vite_rails"
+gem "turbo-rails"
+gem "money-rails", "~>1.12"
+gem "all_futures", github: "leastbad/all_futures", branch: "master"
+gem "cable_ready", github: "stimulusreflex/cable_ready", branch: "master"
+gem "stimulus_reflex", github: "stimulusreflex/stimulus_reflex", branch: "new_installer"
+gem "view_component", "~> 2.79.0"
+gem "faker", "3.0.0"
+gem "redis"

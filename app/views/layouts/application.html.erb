@@ -8,10 +8,28 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application" %>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application' %>
+    <!--
+      If using a TypeScript entrypoint file:
+        vite_typescript_tag 'application'
+
+      If using a .jsx or .tsx entrypoint, add the extension:
+        vite_javascript_tag 'application.jsx'
+
+      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+    -->
+
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto mt-10 px-5 max-w-[1020px]">
+      <% if flash[:notice] %>
+        <div class="p-2 mb-12 rounded shadow bg-sky-100 border border-sky-400">
+          <%= flash[:notice].html_safe %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </main>
   </body>

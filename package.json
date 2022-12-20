@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "vite": "^3.2.5",
+    "vite-plugin-ruby": "^3.1.3"
+  },
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.1",
+    "@hotwired/turbo": "^7.2.4",
+    "@hotwired/turbo-rails": "^7.2.4",
+    "stimulus_reflex": "stimulusreflex/dev-builds#stimulus_reflex/bc8c0da"
+  },
+  "resolutions": {
+    "cable_ready": "cableready/dev-builds#cable_ready/f306edf"
+  }
+}
