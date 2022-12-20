@@ -45,13 +45,17 @@
       </div>
     </div>
 
-    <div>
-      <button
-        data-reflex="click->InvoiceReflex#add_line"
-        data-reflex-dataset="#<%= dom_id(@invoice, :items) %>"
-        data-reflex-serialize-form="false"
-        class="<%= alt_button_classes %>"
-      >Add Line</button>
+    <div class="flex justify-between">
+      <div>
+        <button
+          data-reflex="click->InvoiceReflex#add_line"
+          data-reflex-dataset="#<%= dom_id(@invoice, :items) %>"
+          data-reflex-serialize-form="false"
+          class="<%= alt_button_classes %>"
+        >Add Line</button>
+      </div>
+
+      <%= render InvoiceTotalComponent.new(@invoice) %>
     </div>
   </div>
 <% end %>

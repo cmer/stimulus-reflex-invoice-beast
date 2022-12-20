@@ -13,6 +13,8 @@ class InvoiceReflex < ApplicationReflex
 
     future.added(line_item)
     log_future_details
+
+    update_totals
     morph :nothing # prevents a page reload
   end
 
@@ -22,6 +24,8 @@ class InvoiceReflex < ApplicationReflex
     cable_ready.remove(selector: row_id)
     future.removed(element.dataset.line_item_id)
     log_future_details
+
+    update_totals
     morph :nothing # prevents a page reload
   end
 
@@ -45,6 +49,8 @@ class InvoiceReflex < ApplicationReflex
 
     future.changed(element.dataset.line_item_id)
     log_future_details
+
+    update_totals
     morph :nothing # prevents a page reload
   end
 
@@ -68,5 +74,14 @@ class InvoiceReflex < ApplicationReflex
     text = "Added: #{future.added_items.join(', ')}\nChanged: #{future.changed_items.join(', ')}\nRemoved: #{future.removed_items.join(', ')}"
     Rails.logger.info "Future details: #{text}"
     cable_ready.console_log(message: text)
+  end
+
+  def update_totals
+    invoice_from_params = Invoice.from_future_params(future, params)
+    invoice_from_params.calculate_amounts
+
+    html = render(InvoiceTotalComponent.new(invoice_from_params))
+    selector = dom_id(invoice_from_params, :total)
+    cable_ready.morph(selector:, html:)
   end
 end

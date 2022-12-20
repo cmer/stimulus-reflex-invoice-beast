@@ -1,0 +1,16 @@
+<div id="<%= helpers.dom_id(invoice, :total) %>" class="space-y-2">
+  <div class="flex justify-end mx-12 my-2">
+    <div class="w-36">Total:</div>
+    <div class="w-24 text-right"><%= invoice.total.format %></div>
+  </div>
+
+  <div class="flex justify-end mx-12 my-2">
+    <div class="w-36">Paid:</div>
+    <div class="w-24 text-right"><%= paid_amount.format %></div>
+  </div>
+
+  <div class="flex justify-end mx-12 py-2">
+    <div class="w-36 mt-auto">Balance Due:</div>
+    <div class="w-24 font-bold text-xl text-right"><%= invoice.balance.format %></div>
+  </div>
+</div>
