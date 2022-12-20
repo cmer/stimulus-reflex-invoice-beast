@@ -37,7 +37,7 @@
               class="divide-y divide-gray-200 bg-white"
             >
               <% @invoice.line_items.each do |line_item| %>
-                <%= render LineItemRowComponent.new(line_item) %>
+                <%= render LineItemRowComponent.new(line_item) unless line_item.marked_for_destruction? %>
               <% end %>
             </tbody>
           </table>
