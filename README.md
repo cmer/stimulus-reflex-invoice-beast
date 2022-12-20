@@ -1,24 +1,33 @@
-# README
+# Stimulus Reflex Demo - Invoice Beast
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a demo of a highly dynamic invoice editing user interface
+that is entire server rendered. It is simular to Xero's invoice
+editing interface.
 
-Things you may want to cover:
+It deviate from the standard Rails "form" edit/submit flow by allowing
+a user to make changes to multiple related models, and see the result
+of those changes in real time without submitting the form. The user can
+then either dismiss those changes, or persist them to the database.
 
-* Ruby version
+It makes heavy use of StimulusReflex to communicate via websockets.
+The user interface is as responsive, or faster than any SPA.
 
-* System dependencies
+- Lines of Javascript: Zero.
+- JSON API: No.
+- GraphQL: No.
+- React: No.
+- Sanity: Maintained.
 
-* Configuration
+Technologies used (in order of importance):
 
-* Database creation
+- [Stimulus Reflex](https://docs.stimulusreflex.com/)
+- [CableReady](https://cableready.stimulusreflex.com/)
+- [AllFutures](https://allfutures.leastbad.com/)
+- [Rails 7](https://rubyonrails.org/)
+- [Turbo](https://turbo.hotwired.dev/)
+- [ViewComponent](https://viewcomponent.org/)
 
-* Database initialization
+Inspiration:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- [Beast Mode](https://beastmode.leastbad.com/)
+- [Xero](https://xero.com)'s invoice user interface
