@@ -21,6 +21,7 @@ class Invoice < ApplicationRecord
 
       invoice_future.added_items.each do |line_item_id|
         new_line_item = invoice.line_items.build(line_item_params(params, line_item_id))
+        new_line_item.id = line_item_id
       end
 
       invoice.line_items.each do |line_item|

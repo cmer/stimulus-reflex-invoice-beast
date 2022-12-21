@@ -11,7 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_12_20_032421) do
-  create_table "invoices", force: :cascade do |t|
+  create_table "invoices", id: :string, force: :cascade do |t|
+    t.integer "invoice_number", null: false
     t.date "invoice_date", null: false
     t.date "due_date", null: false
     t.string "customer_name", null: false
@@ -25,8 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_032421) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "line_items", force: :cascade do |t|
-    t.integer "invoice_id", null: false
+  create_table "line_items", id: :string, force: :cascade do |t|
+    t.string "invoice_id", null: false
     t.string "description", null: false
     t.integer "quantity", default: 1, null: false
     t.integer "discount_percentage", default: 0, null: false

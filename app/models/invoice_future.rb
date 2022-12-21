@@ -1,9 +1,9 @@
 # Used to keep track of invoice changes before it is saved to the database.
 class InvoiceFuture < AllFutures::Base
-  attribute :added_items, :integer, array: true, default: []
-  attribute :changed_items, :integer, array: true, default: []
-  attribute :removed_items, :integer, array: true, default: []
-  attribute :validated_items, :integer, array: true, default: []
+  attribute :added_items, :string, array: true, default: []
+  attribute :changed_items, :string, array: true, default: []
+  attribute :removed_items, :string, array: true, default: []
+  attribute :validated_items, :string, array: true, default: []
 
   def added(obj)
     added_items << id_for(obj) unless added?(obj)
@@ -52,10 +52,10 @@ class InvoiceFuture < AllFutures::Base
   def id_for(obj)
     if obj.is_a?(ActiveRecord::Base)
       obj.id
-    elsif obj.is_a?(Integer) || obj.is_a?(String)
-      obj.to_i
+    elsif obj.is_a?(String)
+      obj
     else
-      raise ArgumentError, "Can't get id for #{obj}"
+      raise ArgumentError, "obj must be a String or ActiveRecord::Base"
     end
   end
 end

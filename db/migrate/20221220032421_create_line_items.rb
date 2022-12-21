@@ -1,7 +1,7 @@
 class CreateLineItems < ActiveRecord::Migration[7.0]
   def change
-    create_table :line_items do |t|
-      t.references :invoice, null: false, foreign_key: true
+    create_table :line_items, id: :string do |t|
+      t.references :invoice, null: false, foreign_key: true, type: :string
       t.string :description, null: false
       t.integer :quantity, default: 1, null: false
       t.integer :discount_percentage, default: 0, null: false

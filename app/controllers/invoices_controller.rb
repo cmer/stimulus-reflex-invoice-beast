@@ -17,7 +17,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.from_future_params(@invoice_future, params)
 
     if update_invoice_from_params
-      link_to_invoice = helpers.link_to("Invoice ##{@invoice.id}", edit_invoice_path(@invoice), class: "underline decoration-sky-300 font-semibold")
+      link_to_invoice = helpers.link_to("Invoice ##{@invoice.invoice_number}", edit_invoice_path(@invoice), class: "underline decoration-sky-300 font-semibold")
       redirect_to invoices_path, notice: "#{link_to_invoice} updated!"
     else
       respond_to do |format|

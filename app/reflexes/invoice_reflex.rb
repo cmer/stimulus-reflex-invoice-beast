@@ -5,7 +5,6 @@ class InvoiceReflex < ApplicationReflex
     Rails.logger.info "Adding line..."
 
     line_item = invoice.line_items.build
-    line_item.id = Time.now.to_i + rand(100000) # need a unique id for the form
 
     selector = dom_id(invoice, :items)
     html = render(LineItemRowComponent.new(line_item))
