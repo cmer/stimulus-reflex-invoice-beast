@@ -29,10 +29,15 @@ class InvoicesController < ApplicationController
   private
 
   def update_invoice_from_params
+    # This is needed to populate the errors hash and
+    # show validation errors on the form.
+    @invoice.line_items.each do |line_item|
+      next if line_item.marked_for_destruction?
+      line_item.valid?
+      @invoice_future.validated(line_item)
+    end
+
     Invoice.transaction do
-      @invoice.line_items.each do |line_item|
-        line_item.valid? unless line_item.frozen? # This is needed to populate the errors hash
-      end
       @invoice.line_items.each(&:save!)
       @invoice.save!
       @invoice_future.destroy!

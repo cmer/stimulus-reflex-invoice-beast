@@ -37,6 +37,12 @@ class InvoiceReflex < ApplicationReflex
     line_item.id = element.dataset.line_item_id
     line_item.calculate_total
 
+    # Check if line item was previously validated.
+    # If so, re-validate it to live-update the form's validation errors.
+    if future.validated?(line_item)
+      line_item.valid?
+    end
+
     # Call Morph on `cable_ready` directly because the Stimulus Reflex `morph` method doesn't
     # handle `tr` elements without `table` well. This causes the entire innerHTML to be replaced,
     # rather than the node being morphdom'd.
