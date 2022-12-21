@@ -14,7 +14,6 @@ class InvoiceReflex < ApplicationReflex
     future.added(line_item)
     log_future_details
 
-    update_totals
     morph :nothing # prevents a page reload
   end
 
