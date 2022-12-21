@@ -37,8 +37,10 @@ class InvoiceReflex < ApplicationReflex
     line_item.id = element.dataset.line_item_id
     line_item.calculate_total
 
-    # Check if line item was previously validated.
-    # If so, re-validate it to live-update the form's validation errors.
+    # Check if line item was previously validated when a form post was attempted.
+    # If so, we want to re-validate it every time the line item changes in order
+    # to live-update the form's validation errors. ie: remove the red border when
+    # the field becomes valid.
     if future.validated?(line_item)
       line_item.valid?
     end
