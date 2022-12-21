@@ -18,7 +18,12 @@ The user interface is as responsive, or faster than any SPA.
 - React: No.
 - Sanity: Maintained.
 
-Technologies used (in order of importance):
+## Features
+- Dynamic form validation. Form is initially validated when the form is submitted. Then, errors are cleared as they are resolved, without requiring a form resubmission.
+- Allow adding/removing rows, with automatic recalculation
+- Line item total is automatically calculated and updated after each change
+- Amounts summary is automatically calculated and updated after each change
+## Technologies used (in order of importance):
 
 - [Stimulus Reflex](https://docs.stimulusreflex.com/)
 - [CableReady](https://cableready.stimulusreflex.com/)
@@ -27,7 +32,7 @@ Technologies used (in order of importance):
 - [Turbo](https://turbo.hotwired.dev/)
 - [ViewComponent](https://viewcomponent.org/)
 
-Inspiration:
+## Inspiration:
 
 - [Beast Mode](https://beastmode.leastbad.com/)
 - [Xero](https://xero.com)'s invoice user interface
