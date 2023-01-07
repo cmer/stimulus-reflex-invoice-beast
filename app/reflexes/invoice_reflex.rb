@@ -73,7 +73,7 @@ class InvoiceReflex < ApplicationReflex
   end
 
   def line_item_params(line_item_id)
-    params.dig(:invoice, :line_items, line_item_id)&.permit(:description, :quantity, :price, :discount_percentage)
+    params.dig(:invoice, :line_items, line_item_id)&.permit(:description, :quantity, :price, :discount_percentage) || {}
   end
 
   def log_future_details

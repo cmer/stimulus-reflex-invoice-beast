@@ -38,7 +38,7 @@ class Invoice < ApplicationRecord
     def line_item_params(params, line_item_id)
       params.dig(:invoice, :line_items, line_item_id.to_s)&.permit(
         :description, :price, :quantity, :discount_percentage
-      )
+      ) || {}
     end
   end
 end
