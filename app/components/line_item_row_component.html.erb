@@ -1,7 +1,4 @@
-<% unless omit_outer_element %>
 <tr id="<%= dom_id(line_item) %>" data-row-id="<%= dom_id(line_item) %>" data-line-item-id="<%= line_item.id %>">
-<% end %>
-
   <td class="whitespace-nowrap p-2 text-sm text-gray-700 sm:pl-4">
     <%= text_field_tag field_name(:description),
       line_item.description,
@@ -64,7 +61,4 @@
       </svg>
     <% end %>
   </td>
-
-<% unless omit_outer_element %>
 </tr>
-<% end %>

@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class LineItemRowComponent < ViewComponent::Base
-  attr_reader :line_item, :omit_outer_element
+  attr_reader :line_item
 
-  def initialize(line_item, omit_outer_element: false)
+  def initialize(line_item)
     @line_item = line_item
-    @omit_outer_element = omit_outer_element
   end
 
   def field_name(attribute)

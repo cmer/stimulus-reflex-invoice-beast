@@ -1,4 +1,20 @@
 GIT
+  remote: https://github.com/cmer/stimulus_reflex.git
+  revision: e13c5010ecedae26aa031f358e49bb260bbba512
+  branch: tr-td-fix
+  specs:
+    stimulus_reflex (3.5.0.pre9)
+      actioncable (>= 5.2)
+      actionpack (>= 5.2)
+      actionview (>= 5.2)
+      activesupport (>= 5.2)
+      cable_ready (>= 5.0.0.pre9)
+      nokogiri
+      rack
+      railties (>= 5.2)
+      redis
+
+GIT
   remote: https://github.com/leastbad/all_futures.git
   revision: 925d64740f9299b4c7d24b88543ca469685a0ccd
   branch: master
@@ -24,22 +40,6 @@ GIT
       activesupport (>= 5.2)
       railties (>= 5.2)
       thread-local (>= 1.1.0)
-
-GIT
-  remote: https://github.com/stimulusreflex/stimulus_reflex.git
-  revision: bc8c0da48fbe7ce1564bc4801d56e42c6c688e47
-  branch: new_installer
-  specs:
-    stimulus_reflex (3.5.0.pre9)
-      actioncable (>= 5.2)
-      actionpack (>= 5.2)
-      actionview (>= 5.2)
-      activesupport (>= 5.2)
-      cable_ready (>= 5.0.0.pre9)
-      nokogiri
-      rack
-      railties (>= 5.2)
-      redis
 
 GEM
   remote: https://rubygems.org/

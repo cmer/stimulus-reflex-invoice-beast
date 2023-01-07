@@ -43,21 +43,13 @@ class InvoiceReflex < ApplicationReflex
       line_item.valid?
     end
 
-    # Call Morph on `cable_ready` directly because the Stimulus Reflex `morph` method doesn't
-    # handle `tr` elements without `table` well. This causes the entire innerHTML to be replaced,
-    # rather than the node being morphdom'd.
-    html = render(LineItemRowComponent.new(line_item, omit_outer_element: true))
-    cable_ready.morph(
-      children_only: true,
-      selector: row_id,
-      html: html
-    )
+    html = render(LineItemRowComponent.new(line_item))
 
     future.changed(element.dataset.line_item_id)
     log_future_details
 
+    morph(row_id, html)
     update_totals
-    morph :nothing # prevents a page reload
   end
 
   private
