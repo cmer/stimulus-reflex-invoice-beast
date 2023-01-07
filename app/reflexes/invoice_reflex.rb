@@ -13,7 +13,7 @@ class InvoiceReflex < ApplicationReflex
     future.added(line_item)
     log_future_details
 
-    morph :nothing # prevents a page reload
+    update_totals
   end
 
   def delete_line
@@ -24,7 +24,6 @@ class InvoiceReflex < ApplicationReflex
     log_future_details
 
     update_totals
-    morph :nothing # prevents a page reload
   end
 
   def line_changed
@@ -80,6 +79,7 @@ class InvoiceReflex < ApplicationReflex
 
     html = render(InvoiceTotalComponent.new(invoice_from_params))
     selector = dom_id(invoice_from_params, :total)
-    cable_ready.morph(selector:, html:)
+
+    morph(selector, html)
   end
 end
