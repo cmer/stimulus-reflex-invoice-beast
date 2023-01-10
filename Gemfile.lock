@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/cmer/stimulus_reflex.git
-  revision: e13c5010ecedae26aa031f358e49bb260bbba512
+  revision: 79079abef829560c947515981355136536cede82
   branch: tr-td-fix
   specs:
     stimulus_reflex (3.5.0.pre9)
