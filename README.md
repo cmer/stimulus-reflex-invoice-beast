@@ -18,6 +18,10 @@ The user interface is as responsive, or faster than any SPA.
 - React: No.
 - Sanity: Maintained.
 
+## Video Demo
+
+[![](https://img.youtube.com/vi/KHZuMW0IZTY/maxresdefault.jpg)](https://youtu.be/KHZuMW0IZTY)
+
 ## Features
 - Dynamic form validation. Form is initially validated when the form is submitted. Then, errors are cleared as they are resolved, without requiring a form resubmission.
 - Allow adding/removing rows, with automatic recalculation
