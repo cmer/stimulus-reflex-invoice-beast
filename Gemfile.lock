@@ -1,20 +1,4 @@
 GIT
-  remote: https://github.com/cmer/stimulus_reflex.git
-  revision: 79079abef829560c947515981355136536cede82
-  branch: tr-td-fix
-  specs:
-    stimulus_reflex (3.5.0.pre9)
-      actioncable (>= 5.2)
-      actionpack (>= 5.2)
-      actionview (>= 5.2)
-      activesupport (>= 5.2)
-      cable_ready (>= 5.0.0.pre9)
-      nokogiri
-      rack
-      railties (>= 5.2)
-      redis
-
-GIT
   remote: https://github.com/leastbad/all_futures.git
   revision: 925d64740f9299b4c7d24b88543ca469685a0ccd
   branch: master
@@ -26,20 +10,6 @@ GIT
       activesupport (>= 4.0)
       kredis (~> 1.0)
       ulid (~> 1.3)
-
-GIT
-  remote: https://github.com/stimulusreflex/cable_ready.git
-  revision: 9f0443f6cdf0e58e3619b6d52e6ca99e522a0297
-  branch: master
-  specs:
-    cable_ready (5.0.0.pre9)
-      actioncable (>= 5.2)
-      actionpack (>= 5.2)
-      actionview (>= 5.2)
-      activerecord (>= 5.2)
-      activesupport (>= 5.2)
-      railties (>= 5.2)
-      thread-local (>= 1.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -113,6 +83,12 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     builder (3.2.4)
+    cable_ready (5.0.0.pre10)
+      actionpack (>= 5.2)
+      actionview (>= 5.2)
+      activesupport (>= 5.2)
+      railties (>= 5.2)
+      thread-local (>= 1.1.0)
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
     crass (1.0.6)
@@ -214,6 +190,16 @@ GEM
     reline (0.3.2)
       io-console (~> 0.5)
     sqlite3 (1.5.4-arm64-darwin)
+    stimulus_reflex (3.5.0.pre10)
+      actioncable (>= 5.2, < 8)
+      actionpack (>= 5.2, < 8)
+      actionview (>= 5.2, < 8)
+      activesupport (>= 5.2, < 8)
+      cable_ready (>= 5.0.0.pre10)
+      nokogiri (~> 1.0)
+      rack (~> 2.0)
+      railties (>= 5.2, < 8)
+      redis (>= 4.0, < 6.0)
     tailwindcss-rails (2.0.21-arm64-darwin)
       railties (>= 6.0.0)
     thor (1.2.1)
@@ -247,7 +233,7 @@ PLATFORMS
 
 DEPENDENCIES
   all_futures!
-  cable_ready!
+  cable_ready (= 5.0.0.pre10)
   debug
   faker (= 3.0.0)
   money-rails (~> 1.12)
@@ -256,7 +242,7 @@ DEPENDENCIES
   rails (~> 7.0.4)
   redis
   sqlite3 (~> 1.4)
-  stimulus_reflex!
+  stimulus_reflex (= 3.5.0.pre10)
   tailwindcss-rails
   turbo-rails
   tzinfo-data
