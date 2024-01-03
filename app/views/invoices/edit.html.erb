@@ -1,5 +1,5 @@
 <%= form_with(model: @invoice, format: :html) do %>
-  <%= hidden_field_tag "invoice[future_id]", @invoice_future.id %>
+  <%= hidden_field_tag "serialized_invoice", serialize_invoice %>
 
   <header class="flex justify-between pb-4 border-b m-0">
     <div class="space-x-2">
@@ -33,7 +33,6 @@
             <tbody
               id="<%= dom_id(@invoice, :items) %>"
               data-invoice-id="<%= @invoice.id %>"
-              data-invoice-future-id="<%= @invoice_future.id %>"
               class="divide-y divide-gray-200 bg-white"
             >
               <% @invoice.line_items.each do |line_item| %>
@@ -49,8 +48,7 @@
       <div>
         <button
           data-reflex="click->InvoiceReflex#add_line"
-          data-reflex-dataset="#<%= dom_id(@invoice, :items) %>"
-          data-reflex-serialize-form="false"
+          data-reflex-serialize-form="true"
           class="<%= alt_button_classes %>"
         >Add Line</button>
       </div>

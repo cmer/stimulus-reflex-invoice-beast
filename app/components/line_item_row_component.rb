@@ -12,7 +12,7 @@ class LineItemRowComponent < ViewComponent::Base
   end
 
   def dataset
-    "##{dom_id(line_item)} ##{dom_id(line_item.invoice, :items)}"
+    "##{dom_id(line_item)}"
   end
 
   def text_input_classes_for(attribute)

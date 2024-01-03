@@ -38,7 +38,6 @@
       class: "#{text_input_classes_for(:discount_percentage)} w-14 text-right",
       data: {
         reflex: "change->InvoiceReflex#line_changed",
-        reflex_dataset: dataset,
         reflex_serialize_form: "true"
       }
     %>
@@ -53,7 +52,7 @@
       data: {
         reflex: "click->InvoiceReflex#delete_line",
         reflex_dataset: dataset,
-        reflex_serialize_form: "false"
+        reflex_serialize_form: "true"
       }) do
     %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">

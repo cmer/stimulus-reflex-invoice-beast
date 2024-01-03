@@ -1,4 +1,6 @@
 class InvoicesController < ApplicationController
+  before_action :load_invoice, only: [:edit, :update]
+
   def random
     redirect_to edit_invoice_path(Invoice.order("RANDOM()").first)
   end
@@ -8,15 +10,11 @@ class InvoicesController < ApplicationController
   end
 
   def edit
-    @invoice = Invoice.preload(:line_items).find(params[:id])
-    @invoice_future = InvoiceFuture.create
+    Rails.logger.info "Invoice: #{@invoice.id}"
   end
 
   def update
-    @invoice_future = InvoiceFuture.find(params[:invoice][:future_id])
-    @invoice = Invoice.from_future_params(@invoice_future, params)
-
-    if update_invoice_from_params
+    if @invoice.save
       link_to_invoice = helpers.link_to("Invoice ##{@invoice.invoice_number}", edit_invoice_path(@invoice), class: "underline decoration-sky-300 font-semibold")
       redirect_to invoices_path, notice: "#{link_to_invoice} updated!"
     else
@@ -28,21 +26,31 @@ class InvoicesController < ApplicationController
 
   private
 
-  def update_invoice_from_params
-    # This is needed to populate the errors hash and
-    # show validation errors on the form.
-    @invoice.line_items.each do |line_item|
-      next if line_item.marked_for_destruction?
-      line_item.valid?
-      @invoice_future.validated(line_item)
+  def load_invoice
+    return @invoice if @invoice
+
+    serialized = params[:serialized_invoice]
+
+    @invoice = if serialized.present?
+      Rails.logger.info "Loading invoice from serialized URI: #{serialized}"
+      URI::UID.parse(serialized).decode
+    elsif params[:id].present?
+      Rails.logger.info "Loading invoice from ID: #{params[:id]}"
+      Invoice.includes(:line_items).find(params[:id])
     end
 
-    Invoice.transaction do
-      @invoice.line_items.each(&:save!)
-      @invoice.save!
-      @invoice_future.destroy!
-    end
-  rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotSaved
-    false
+    @invoice
   end
+
+  def serialize_invoice
+    options = {
+        include_blank: true,
+        include_unsaved_changes: true,
+        include_descendants: true,
+        descendant_depth: 1,
+        include_keys: true
+      }
+    URI::UID.build(@invoice, options).to_s
+  end
+  helper_method :serialize_invoice
 end
