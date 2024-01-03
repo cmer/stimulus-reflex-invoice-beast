@@ -38,6 +38,7 @@
       class: "#{text_input_classes_for(:discount_percentage)} w-14 text-right",
       data: {
         reflex: "change->InvoiceReflex#line_changed",
+        reflex_dataset: dataset,
         reflex_serialize_form: "true"
       }
     %>
