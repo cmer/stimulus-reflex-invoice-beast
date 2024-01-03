@@ -12,10 +12,7 @@ class InvoiceReflex < ApplicationReflex
   end
 
   def line_changed
-    line_item = find_line_item
-    return unless line_item
-
-    line_item.assign_attributes(permitted_line_params)
+    find_line_item&.assign_attributes(permitted_line_params)
     invoice.calculate_amounts
   end
 

@@ -10,7 +10,6 @@ class InvoicesController < ApplicationController
   end
 
   def edit
-    Rails.logger.info "Invoice: #{@invoice.id}"
   end
 
   def update
