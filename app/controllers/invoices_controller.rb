@@ -9,9 +9,6 @@ class InvoicesController < ApplicationController
     @invoices = Invoice.all
   end
 
-  def edit
-  end
-
   def update
     if @invoice.save
       link_to_invoice = helpers.link_to("Invoice ##{@invoice.invoice_number}", edit_invoice_path(@invoice), class: "underline decoration-sky-300 font-semibold")
@@ -24,18 +21,17 @@ class InvoicesController < ApplicationController
   end
 
   def load_invoice
-    return @invoice if @invoice
+    @invoice ||= load_from_serialized || load_from_id
+  end
 
-    serialized = params[:serialized_invoice]
+  private
 
-    @invoice = if serialized.present?
-      Rails.logger.info "Loading invoice from serialized URI: #{serialized}"
-      Invoice.from_encrypted_s(serialized)
-    elsif params[:id].present?
-      Rails.logger.info "Loading invoice from ID: #{params[:id]}"
-      Invoice.includes(:line_items).find(params[:id])
-    end
+  def load_from_serialized
+    return unless params[:serialized_invoice].present?
+    Invoice.from_encrypted_s(params[:serialized_invoice])
+  end
 
-    @invoice
+  def load_from_id
+    Invoice.includes(:line_items).find(params[:id])
   end
 end
