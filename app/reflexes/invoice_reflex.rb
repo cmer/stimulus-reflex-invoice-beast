@@ -18,9 +18,7 @@ class InvoiceReflex < ApplicationReflex
 
   private
 
-  def invoice
-    controller.send(:load_invoice)
-  end
+  def invoice = controller.load_invoice
 
   def line_item_id
     @line_item_id ||= element.dataset.line_item_id || SecureRandom.uuid

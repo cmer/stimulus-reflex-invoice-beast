@@ -23,8 +23,6 @@ class InvoicesController < ApplicationController
     end
   end
 
-  private
-
   def load_invoice
     return @invoice if @invoice
 
@@ -32,7 +30,7 @@ class InvoicesController < ApplicationController
 
     @invoice = if serialized.present?
       Rails.logger.info "Loading invoice from serialized URI: #{serialized}"
-      URI::UID.parse(serialized).decode
+      Invoice.from_encrypted_s(serialized)
     elsif params[:id].present?
       Rails.logger.info "Loading invoice from ID: #{params[:id]}"
       Invoice.includes(:line_items).find(params[:id])
@@ -40,16 +38,4 @@ class InvoicesController < ApplicationController
 
     @invoice
   end
-
-  def serialize_invoice
-    options = {
-        include_blank: true,
-        include_unsaved_changes: true,
-        include_descendants: true,
-        descendant_depth: 1,
-        include_keys: true
-      }
-    URI::UID.build(@invoice, options).to_s
-  end
-  helper_method :serialize_invoice
 end

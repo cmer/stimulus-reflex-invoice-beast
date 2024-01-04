@@ -1,5 +1,5 @@
 <%= form_with(model: @invoice, format: :html) do %>
-  <%= hidden_field_tag "serialized_invoice", serialize_invoice %>
+  <%= hidden_field_tag "serialized_invoice", @invoice.to_encrypted_s %>
 
   <header class="flex justify-between pb-4 border-b m-0">
     <div class="space-x-2">
