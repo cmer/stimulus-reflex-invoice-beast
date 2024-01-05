@@ -11,12 +11,9 @@ class InvoicesController < ApplicationController
 
   def update
     if @invoice.save
-      link_to_invoice = helpers.link_to("Invoice ##{@invoice.invoice_number}", edit_invoice_path(@invoice), class: "underline decoration-sky-300 font-semibold")
       redirect_to invoices_path, notice: "#{link_to_invoice} updated!"
     else
-      respond_to do |format|
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -33,5 +30,9 @@ class InvoicesController < ApplicationController
 
   def load_from_id
     Invoice.includes(:line_items).find(params[:id])
+  end
+
+  def link_to_invoice
+    helpers.link_to("Invoice ##{@invoice.invoice_number}", edit_invoice_path(@invoice), class: "underline decoration-sky-300 font-semibold")
   end
 end

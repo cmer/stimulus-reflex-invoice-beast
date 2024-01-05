@@ -22,9 +22,6 @@ class LineItem < ApplicationRecord
     self.total_cents = (q * p) - (q * p * d / 100)
   end
 
-  def empty_line?
-    description.blank? && (price.blank? || price.zero?) && (discount_percentage.blank?)
-  end
 
   def assign_defaults
     self.discount_percentage ||= 0
