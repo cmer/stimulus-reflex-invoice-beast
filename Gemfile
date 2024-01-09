@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.2"
+ruby "3.3.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4"
+gem "rails", "~> 7.1.2"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
@@ -13,7 +13,7 @@ gem "propshaft"
 gem "sqlite3", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma", "~> 6.0"
 
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"
@@ -35,9 +35,9 @@ end
 gem "vite_rails"
 gem "turbo-rails"
 gem "money-rails", "~>1.12"
-gem "cable_ready", "5.0.0.pre10"
-gem "stimulus_reflex", "3.5.0.pre10"
-gem "view_component", "~> 2.79.0"
+gem "cable_ready", "5.0.3"
+gem "stimulus_reflex", "3.5.0.rc3"
+gem "view_component", "~> 3.9.0"
 gem "faker", "3.0.0"
 gem "redis"
 gem "universalid", github: "hopsoft/universalid", branch: "hopsoft/payload-size"
