@@ -1,6 +1,6 @@
-# Stimulus Reflex Demo - Invoice Beast
+# Invoice Beast - A Javascript-less, highly interactive demo
 
-This is a demo of a highly dynamic invoice editing user interface
+Invoice Beast is highly interactive invoice editing user interface
 that is entire server rendered. It is simular to Xero's invoice
 editing interface.
 
@@ -9,7 +9,7 @@ a user to make changes to multiple related models, and see the result
 of those changes in real time without submitting the form. The user can
 then either dismiss those changes, or persist them to the database.
 
-It makes heavy use of StimulusReflex to communicate via websockets.
+It makes use of StimulusReflex to communicate via Websockets.
 The user interface is as responsive, or faster than any SPA.
 
 - Lines of Javascript: Zero.
@@ -27,14 +27,12 @@ The user interface is as responsive, or faster than any SPA.
 - Allow adding/removing rows, with automatic recalculation
 - Line item total is automatically calculated and updated after each change
 - Amounts summary is automatically calculated and updated after each change
+-
 ## Technologies used (in order of importance):
 
 - [Stimulus Reflex](https://docs.stimulusreflex.com/)
-- [CableReady](https://cableready.stimulusreflex.com/)
-- [AllFutures](https://allfutures.leastbad.com/)
-- [Rails 7](https://rubyonrails.org/)
+- [Universal ID](https://github.com/hopsoft/universalid)
 - [Turbo](https://turbo.hotwired.dev/)
-- [ViewComponent](https://viewcomponent.org/)
 
 ## Inspiration:
 
