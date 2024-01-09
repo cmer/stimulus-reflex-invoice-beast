@@ -299,7 +299,6 @@ PLATFORMS
   arm64-darwin-23
 
 DEPENDENCIES
-  cable_ready (= 5.0.3)
   debug
   faker (= 3.0.0)
   money-rails (~> 1.12)

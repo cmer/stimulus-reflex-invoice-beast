@@ -33,11 +33,12 @@ group :development do
 end
 
 gem "vite_rails"
-gem "turbo-rails"
 gem "money-rails", "~>1.12"
-gem "cable_ready", "5.0.3"
-gem "stimulus_reflex", "3.5.0.rc3"
 gem "view_component", "~> 3.9.0"
 gem "faker", "3.0.0"
 gem "redis"
+
+# Relevant gems for interactivity
+gem "turbo-rails"
+gem "stimulus_reflex", "3.5.0.rc3"
 gem "universalid", github: "hopsoft/universalid", branch: "hopsoft/payload-size"
