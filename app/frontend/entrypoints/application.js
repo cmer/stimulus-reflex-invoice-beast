@@ -27,3 +27,6 @@ Turbo.start()
 
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
+
+import debounced from 'debounced'
+debounced.initialize()

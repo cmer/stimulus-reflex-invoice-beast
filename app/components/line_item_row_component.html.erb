@@ -4,7 +4,7 @@
       line_item.description,
       class: "#{text_input_classes_for(:description)} w-full",
       data: {
-        reflex: "change->InvoiceReflex#line_changed",
+        reflex: "debounced:input->InvoiceReflex#line_changed",
         reflex_dataset: dataset,
         reflex_serialize_form: "true"
       }
