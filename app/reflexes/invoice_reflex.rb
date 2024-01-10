@@ -35,8 +35,8 @@ class InvoiceReflex < ApplicationReflex
     params.require(:invoice).require(:line_items).require(line_item_id).permit(:description, :price, :quantity, :discount_percentage)
   end
 
+  # revalidate the invoice only if it previously had errors
   def revalidate_invoice
-    # revalidate the invoice only if it previously had errors
     invoice.valid? if params[:error_count].to_i > 0
   end
 end
