@@ -4,16 +4,19 @@ class InvoiceReflex < ApplicationReflex
   def add_line
     invoice.line_items << invoice.line_items.build(id: line_item_id)
     invoice.calculate_amounts
+    revalidate_invoice
   end
 
   def delete_line
     find_line_item&.mark_for_destruction
     invoice.calculate_amounts
+    revalidate_invoice
   end
 
   def line_changed
     find_line_item&.assign_attributes(permitted_line_params)
     invoice.calculate_amounts
+    revalidate_invoice
   end
 
   private
@@ -30,5 +33,10 @@ class InvoiceReflex < ApplicationReflex
 
   def permitted_line_params
     params.require(:invoice).require(:line_items).require(line_item_id).permit(:description, :price, :quantity, :discount_percentage)
+  end
+
+  def revalidate_invoice
+    # revalidate the invoice only if it previously had errors
+    invoice.valid? if params[:error_count].to_i > 0
   end
 end
