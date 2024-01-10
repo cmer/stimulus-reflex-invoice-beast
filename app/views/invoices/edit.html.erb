@@ -25,17 +25,13 @@
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Qty</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Unit Price</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Disc. %</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 text-right">Total</th>
+                <th scope="col" class="px-3 py-3.5 text-sm font-semibold text-gray-900 text-right">Total</th>
                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                   <span class="sr-only">Delete</span>
                 </th>
               </tr>
             </thead>
-            <tbody
-              id="<%= dom_id(@invoice, :items) %>"
-              data-invoice-id="<%= @invoice.id %>"
-              class="divide-y divide-gray-200 bg-white"
-            >
+            <tbody class="divide-y divide-gray-200 bg-white">
               <% @invoice.line_items.each do |line_item| %>
                 <%= render LineItemRowComponent.new(line_item) unless line_item.marked_for_destruction? %>
               <% end %>
