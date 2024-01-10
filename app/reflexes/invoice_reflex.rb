@@ -4,7 +4,6 @@ class InvoiceReflex < ApplicationReflex
   def add_line
     invoice.line_items << invoice.line_items.build(id: line_item_id)
     invoice.calculate_amounts
-    revalidate_invoice
   end
 
   def delete_line
