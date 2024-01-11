@@ -18,7 +18,7 @@ class Invoice < ApplicationRecord
   def to_encrypted_s
     options = {
       include_blank: true,
-      include_unsaved_changes: true,
+      include_changes: true,
       include_descendants: true,
       descendant_depth: 1,
       include_keys: true

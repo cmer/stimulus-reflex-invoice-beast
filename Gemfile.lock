@@ -261,7 +261,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    universalid (0.1.4)
+    universalid (0.1.5)
       activesupport (>= 6.1)
       brotli (>= 0.4)
       config (>= 5.0)
@@ -306,7 +306,7 @@ DEPENDENCIES
   tailwindcss-rails
   turbo-rails
   tzinfo-data
-  universalid (= 0.1.4)
+  universalid (= 0.1.5)
   view_component (~> 3.9.0)
   vite_rails
   web-console

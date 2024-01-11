@@ -41,4 +41,4 @@ gem "redis"
 # Relevant gems for interactivity
 gem "turbo-rails"
 gem "stimulus_reflex", "3.5.0.rc3"
-gem "universalid", "0.1.4"
+gem "universalid", "0.1.5"
